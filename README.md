@@ -124,6 +124,6 @@ ORDER BY age_group, count DESC;
 | 62-78	     | Prostate Cancer      |  33 |
 | 62-78	     | Osteoarthritis     |  22 |
 
-
-
+## 1. There is No Strong Correlation Between Length of Stay and Satisfaction ##
+![Satisfaction](assets/img/satisfactionchart.PNG)
 ## Dashboard Images
