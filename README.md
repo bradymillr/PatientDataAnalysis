@@ -58,30 +58,32 @@ group by age
 order by age asc;
 ```
 
-| age         | number of patients |
-|:-------------|--------------:|
-| 25	 | 34          |
-| 28	     | 32          | 
-| 30	   | 33          |
-| 32	   | 33          |
-| 35	   | 65          |
-| 40	 | 34          |
-| 45	     | 66          | 
-| 48	   | 32          |
-| 50	   | 33          |
-| 52	   | 65          |
-| 53	 | 33          |
-| 55	     | 98          | 
-| 58	   | 33          |
-| 60	   | 65          |
-| 62	   | 33          |
-| 65	 | 64          |
-| 67	     | 32          | 
-| 68	   | 33          |
-| 70	   | 33          |
-| 72	   | 33          |
-| 75	 | 34          |
-| 78	     | 66          | 
+| age | numberofpatients |
+|-----|------------------|
+| 25  | 34               |
+| 28  | 32               |
+| 30  | 33               |
+| 32  | 33               |
+| 35  | 65               |
+| 40  | 34               |
+| 45  | 66               |
+| 48  | 32               |
+| 50  | 33               |
+| 52  | 65               |
+| 53  | 33               |
+| 55  | 98               |
+| 58  | 33               |
+| 60  | 65               |
+| 62  | 33               |
+| 65  | 64               |
+| 67  | 32               |
+| 68  | 33               |
+| 70  | 33               |
+| 72  | 33               |
+| 75  | 34               |
+| 78  | 66               |
+
+
 
 
 Next, I used the three classes of (25-45), (48-60), and (62-78) to query for the frequency of each type of condition. Below are the results. I found these results to be quite intuitive and they seem almost obvious once being revealed. As we can see below, the 25-45 age group has a high frequency of accidents/injuries that could be more easily preventable, and naturally, childbirth. While as you continue to progress through the results, we find that the conditions become more and more severe as well as less-easily prevented. 
@@ -101,29 +103,29 @@ WHERE age BETWEEN 25 AND 45 OR age BETWEEN 48 AND 60 OR age BETWEEN 62 AND 78
 GROUP BY age_group, data.condition
 ORDER BY age_group, count DESC;
 ```
-| age_group         | condition | count|
-|:-------------|--------------:|-------:|
-| 25-45	          | Fractured Leg         |     67    |
-| 25-45	     | Fractured Arm          |  66 |
-| 25-45	          | Allergic Reaction         |     66    |
-| 25-45	     | Childbirth         |  65 |
-| 25-45	          | Appendicitis        |     32    |
-| 25-45	     | Heart Disease       |  1 |
-| 48-60	          | Cancer         |     66    |
-| 48-60	     | Respiratory Infection          |  65 |
-| 48-60	          | Kidney Stones        |     65    |
-| 48-60	     | Heart Disease         |  64 |
-| 48-60	          | Appendicitis        |     34    |
-| 48-60	     | Osteoarthritis      |  32 |
-| 48-60	     | Prostate Cancer         |  32 |
-| 48-60	          | Diabetes        |     1    |
-| 62-78	     | Heart Attack      |  67 |
-| 62-78	     | Stroke     |  66 |
-| 62-78	     | Hypertension      |  66 |
-| 62-78	     | Diabetes     |  64 |
-| 62-78	     | Prostate Cancer      |  33 |
-| 62-78	     | Osteoarthritis     |  22 |
+| age_group | condition             | count |
+|-----------|-----------------------|-------|
+| 25-45     | Fractured Leg         | 67    |
+| 25-45     | Fractured Arm         | 66    |
+| 25-45     | Allergic Reaction     | 66    |
+| 25-45     | Childbirth            | 65    |
+| 25-45     | Appendicitis          | 32    |
+| 25-45     | Heart Disease         | 1     |
+| 48-60     | Cancer                | 66    |
+| 48-60     | Respiratory Infection | 65    |
+| 48-60     | Kidney Stones         | 65    |
+| 48-60     | Heart Disease         | 64    |
+| 48-60     | Appendicitis          | 34    |
+| 48-60     | Osteoarthritis        | 32    |
+| 48-60     | Prostate Cancer       | 32    |
+| 48-60     | Diabetes              | 1     |
+| 62-78     | Heart Attack          | 67    |
+| 62-78     | Stroke                | 66    |
+| 62-78     | Hypertension          | 66    |
+| 62-78     | Diabetes              | 64    |
+| 62-78     | Prostate Cancer       | 33    |
+| 62-78     | Osteoarthritis        | 32    |
 
 ## 1. There is No Strong Correlation Between Length of Stay and Satisfaction ##
-![Satisfaction](assets/img/satisfactionchart.PNG)
+![Satisfaction](assets/img/satisfactionchart.png)
 ## Dashboard Images
