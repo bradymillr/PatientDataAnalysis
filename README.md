@@ -126,6 +126,40 @@ ORDER BY age_group, count DESC;
 | 62-78     | Prostate Cancer       | 33    |
 | 62-78     | Osteoarthritis        | 32    |
 
-## 1. There is No Strong Correlation Between Length of Stay and Satisfaction ##
+## 2. There is No Strong Correlation Between Length of Stay and Satisfaction ##
+For this question, I wanted a simple query that would allow us to see top and bottom 10 values of the length of stay variable to determine if there is a connection. The reason I am limiting the query I am inserting into this, is because there would be roughly 70 rows. However, below I have the query along with its shortened result, and a graph based on the entirety of the data. As we can see there seems to be a small connection based on the query, but when looking at the whole graph, it seems any point beyond a few days loses the extra bonus of satisfaction I would attribute to speed.
+
+``` SQL
+SELECT length_of_stay, AVG(satisfaction) as "Average Satisfaction"
+FROM data 
+WHERE length_of_stay BETWEEN 1 AND 10 OR (length_of_stay BETWEEN 65 AND 75)
+GROUP BY length_of_stay
+ORDER BY length_of_stay asc;
+```
+| length_of_stay | Average Satisfaction |
+|----------------|----------------------|
+| 1              | 5.0000               |
+| 2              | 4.5000               |
+| 3              | 4.1667               |
+| 4              | 4.0000               |
+| 5              | 3.9000               |
+| 6              | 3.9091               |
+| 7              | 3.7500               |
+| 8              | 3.5833               |
+| 9              | 3.5714               |
+| 10             | 3.6000               |
+| 65             | 3.6000               |
+| 66             | 3.4615               |
+| 67             | 3.5714               |
+| 68             | 3.5000               |
+| 69             | 3.2727               |
+| 70             | 3.2500               |
+| 71             | 3.1429               |
+| 72             | 3.0000               |
+| 73             | 2.7500               |
+| 74             | 2.7500               |
+| 75             | 4.0000               |
+
 ![Satisfaction](assets/img/satisfactionchart.png)
+
 ## Dashboard Images
