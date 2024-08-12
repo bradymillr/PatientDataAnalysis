@@ -162,4 +162,44 @@ ORDER BY length_of_stay asc;
 
 ![Satisfaction](assets/img/satisfactionchart.png)
 
+## 3. Conditions With The Highest Readmission Rates are Heart Attack, Heart Disease, and Fractured Arm? ##
+For this question, I knew this would be a more complex query as it required quantification of the frequency of the value 'Yes' as well as transforming that number into a percentage. While Heart Attack, and Heart Disease are not that surprising, it is surprising that a Fractured Arm takes third on this list. The thing that stands out to me instantly, is that there is a 0% readmission rate for a fractured leg that we had seen in a query prior. It is also interesting that this is equivalent to the rate at which strok enad cancer patients are readmitted. The query and results are below.
+
+``` SQL
+WITH ReadmissionCounts AS (
+  SELECT
+    data.condition AS healthcondition,
+    SUM(CASE WHEN data.readmission = 'yes' THEN 1 ELSE 0 END) AS readmission_count,
+    COUNT(*) AS total_count
+  FROM data
+  GROUP BY data.condition
+),
+ReadmissionRates AS (
+  SELECT
+    healthcondition,
+    readmission_count,
+    total_count,
+    (readmission_count * 1.0 / total_count) AS readmission_rate
+  FROM ReadmissionCounts
+)
+SELECT
+  healthcondition,
+  readmission_count,
+  total_count,
+  readmission_rate
+FROM ReadmissionRates
+WHERE readmission_rate > 0
+ORDER BY readmission_rate DESC;
+```
+
+| healthcondition | readmission_count | total_count | readmission_rate |
+|-----------------|-------------------|-------------|------------------|
+| Heart Attack    | 67                | 67          | 1.00000          |
+| Heart Disease   | 64                | 65          | 0.98462          |
+| Fractured Arm   | 33                | 66          | 0.50000          |
+| Stroke          | 33                | 66          | 0.50000          |
+| Cancer          | 33                | 66          | 0.50000          |
+| Appendicitis    | 33                | 66          | 0.50000          |
+| Diabetes        | 1                 | 65          | 0.01538          |
+
 ## Dashboard Images
